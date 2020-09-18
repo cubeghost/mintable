@@ -10,6 +10,7 @@ import { logInfo, logError, logWarn } from '../../common/logging'
 import http from 'http'
 import { AccountConfig, Account, PlaidAccountConfig } from '../../types/account'
 import { Transaction } from '../../types/transaction'
+import { join } from 'lodash'
 
 const PLAID_USER_ID = 'LOCAL'
 
@@ -231,7 +232,7 @@ export class PlaidIntegration {
                     type: transaction.transaction_type,
                     accountId: transaction.account_id,
                     transactionId: transaction.transaction_id,
-                    category: transaction.category.join(' - '),
+                    category: join(transaction.category, ' - '),
                     address: transaction.location.address,
                     city: transaction.location.city,
                     state: transaction.location.region,

@@ -1,6 +1,7 @@
 import { getConfig } from '../common/config'
 import { PlaidIntegration } from '../integrations/plaid/plaidIntegration'
 import { GoogleIntegration } from '../integrations/google/googleIntegration'
+import { AirtableIntegration } from '../integrations/airtable/airtableIntegration'
 import { logInfo } from '../common/logging'
 import { Account } from '../types/account'
 import { IntegrationId } from '../types/integrations'
@@ -95,6 +96,10 @@ export default async () => {
             const google = new GoogleIntegration(config)
             await google.updateBalances(accounts)
             break
+        case IntegrationId.Airtable:
+            const airtable = new AirtableIntegration(config)
+            await airtable.updateBalances(accounts)
+            break
         case IntegrationId.CSVExport:
             const csv = new CSVExportIntegration(config)
             await csv.updateBalances(accounts)
@@ -107,6 +112,10 @@ export default async () => {
         case IntegrationId.Google:
             const google = new GoogleIntegration(config)
             await google.updateTransactions(accounts)
+            break
+        case IntegrationId.Airtable:
+            const airtable = new AirtableIntegration(config)
+            await airtable.updateTransactions(accounts)
             break
         case IntegrationId.CSVExport:
             const csv = new CSVExportIntegration(config)

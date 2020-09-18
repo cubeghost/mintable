@@ -5,6 +5,7 @@ const chalk = require('chalk')
 import { updateConfig, readConfig, getConfigSource } from '../common/config'
 import plaid from '../integrations/plaid/setup'
 import google from '../integrations/google/setup'
+import airtable from '../integrations/airtable/setup'
 import csvImport from '../integrations/csv-import/setup'
 import csvExport from '../integrations/csv-export/setup'
 import accountSetup from '../integrations/plaid/accountSetup'
@@ -42,6 +43,7 @@ import { logError } from '../common/logging'
         'plaid-setup': plaid,
         'account-setup': accountSetup,
         'google-setup': google,
+        'airtable-setup': airtable,
         'csv-import-setup': csvImport,
         'csv-export-setup': csvExport
     }
